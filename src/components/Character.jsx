@@ -1,7 +1,7 @@
-// import React from "react";
+import React from "react";
 
-function Character({ characterData }) {
-	if (!CharacterData.noData) {
+export default function Character({ characterData }) {
+	if (!characterData.noData) {
 		switch (true) {
 			case characterData.hat === undefined:
 				throw Error("No hat value provided.");
@@ -23,18 +23,19 @@ function Character({ characterData }) {
 				throw Error("Invalid weapon value.");
 		}
 	}
+
 	const hat = characterData.hat ? "hat" : "noHat";
 	const shield = characterData.shield ? "shield" : "noShield";
 	const weapon = characterData.weapon;
-	const CharacterImageUrl = characterData.noData
+
+	const characterImageUrl = characterData.noData
 		? null
-		: "/public/images/" + hat + "-" + shield + "-" + weapon + ".png";
+		: "./images/" + hat + "-" + shield + "-" + weapon + ".png";
+
 	return (
 		<div className="character-container">
-			<img src="{characterImageUrl}" />
+			<img src={characterImageUrl} />
 			<div className="character-name">{characterData.name}</div>
 		</div>
 	);
 }
-
-export default Character;
